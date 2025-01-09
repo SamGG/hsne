@@ -1,0 +1,27 @@
+CXX_STD = CXX11
+
+#PKG_CXXFLAGS= $(SHLIB_OPENMP_CXXFLAGS)
+#PKG_CXXFLAGS= $(SHLIB_OPENMP_CXXFLAGS) -w
+#PKG_CXXFLAGS= $(SHLIB_OPENMP_CXXFLAGS) -Wno-sign-compare -Wno-unused-variable \
+  -Wno-unknown-pragmas -Wno-return-type -Wno-unused-local-typedefs \
+  -Wno-maybe-uninitialized -Wno-reorder
+# add back $(SHLIB_OPENMP_CXXFLAGS)
+PKG_CXXFLAGS= -Wno-sign-compare -Wno-unused-variable \
+  -Wno-unknown-pragmas -Wno-return-type -Wno-unused-local-typedefs \
+  -Wno-maybe-uninitialized -Wno-reorder -I'C:/apps/rtools44/x86_64-w64-mingw32.static.posix/include/opencv4'
+
+#PKG_CXXFLAGS= -Wno-sign-compare -Wno-unused-variable \
+  -Wno-unknown-pragmas -Wno-return-type -Wno-unused-local-typedefs \
+  -Wno-maybe-uninitialized -Wno-reorder -I'C:/apps/rtools44/mingw64/include'
+
+# for linking
+PKG_LIBS = -lgomp -lopencv_core4100 -lopencv_flann4100 -lopengl32 -lglu32
+#PKG_LIBS = $(SHLIB_OPENMP_CXXFLAGS) -lgomp -ldl -llz4
+#PKG_LIBS = $(SHLIB_OPENMP_CXXFLAGS) -lgomp -ldl -llz4 -lflann  -L'C:/apps/rtools44/mingw64/lib'
+
+
+HDI_O = r_hdi/hierarchical_sne.o r_hdi/cout_log.o r_hdi/log_progress.o \
+  r_hdi/math_utils.o r_hdi/memory_utils.o r_hdi/panel_data.o r_hdi/timers.o
+OBJECTS = $(HDI_O) RcppExports.o df_to_hsne.o aa_annoy.o
+
+# OBJECTS = RcppExports.o aa_annoy.o
